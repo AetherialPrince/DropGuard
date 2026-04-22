@@ -1,0 +1,70 @@
+# config_default.yaml
+# ======================================================
+# DropGuard / NIDPS Default Configuration
+# Safe baseline settings with explanations.
+# Edit config.yaml for personal overrides.
+# ======================================================
+
+features:
+  ssh: true              # Detect SSH traffic to port 22
+  ftp: true              # Detect FTP traffic to port 21
+  discovery: true        # Alert when a new MAC address appears
+  portscan: true         # Detect scanning across many ports
+  custom_rules: true     # Enable database custom packet rules
+  pcap: true             # Save packet captures periodically
+  arp_spoof: true        # Detect ARP spoof / gateway impersonation
+
+detection:
+  portscan:
+    threshold: 10        # Unique ports required before alerting
+    window: 30           # Seconds to count port activity
+
+  arp_spoof:
+    threshold: 3         # Repeated conflicting ARP claims before alert
+    window: 15           # Seconds to watch for ARP conflicts
+    protect_gateway: true # Immediate alert if gateway MAC changes
+
+  cooldown_seconds:      # Prevent repeated identical alerts
+    PORT_SCAN: 30        
+    SSH: 60
+    FTP: 60
+    NEW_HOST: 120
+    ARP_SPOOF: 180
+
+sniffer:
+  threads: 4             # Detection worker threads
+  dedupe_window: 0.5     # Ignore near-identical flows for this many seconds
+
+pcap:
+  interval: 30           # Seconds between capture file writes
+
+rules:
+  NEW_HOST:
+    alert: true
+    blacklist: false
+    write_rule: false
+    drop: false
+
+  PORT_SCAN:
+    alert: true
+    blacklist: true
+    write_rule: true
+    drop: true
+
+  SSH:
+    alert: true
+    blacklist: true
+    write_rule: true
+    drop: true
+
+  FTP:
+    alert: true
+    blacklist: true
+    write_rule: true
+    drop: true
+
+  ARP_SPOOF:
+    alert: true
+    blacklist: true
+    write_rule: true
+    drop: true

@@ -1,0 +1,32 @@
+# Only place values here that you want to change from defaults.
+# Smaller file = easier maintenance.
+
+features:
+  pcap: false            # Disable capture files if not needed
+
+detection:
+  portscan:
+    threshold: 15        # Less sensitive than default
+
+  cooldown_seconds:
+    PORT_SCAN: 60
+
+sniffer:
+  threads: 6             # Use more CPU for faster systems
+
+pcap:
+  interval: 60           # Write captures less often
+
+rules:
+  NEW_HOST:
+    alert: true
+
+  PORT_SCAN:
+    blacklist: true
+    drop: true
+
+  SSH:
+    blacklist: true
+
+  FTP:
+    blacklist: true
