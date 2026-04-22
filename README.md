@@ -44,7 +44,7 @@ Default policies out of the box:
 | FTP Attempt | ✓ | ✓ | ✓ | ✓ |
 | ARP Spoof | ✓ | ✓ | ✓ | ✓ |
 
-All policies are configurable through the Settings page without touching any files.
+All policies are configurable through the Config file in the sourcecode, some within the settings page. 
 
 ---
 
