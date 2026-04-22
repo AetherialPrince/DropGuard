@@ -1,5 +1,6 @@
 # DropGuard
 **Network Intrusion Detection & Prevention System**
+**Created by: Valentino Palacio, Jace Hillis and Marco Narvaez
 
 DropGuard is a real-time network security monitor for Linux. It watches your local network for threats, alerts you when something suspicious is detected, and actively blocks malicious hosts — all through a graphical interface with no terminal required after installation.
 
